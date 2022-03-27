@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public employees!: Employee[];
   public editEmployee!: Employee;
   public deleteEmployee!: Employee;
+  public newEmployee!:Employee;
 
   constructor(private employeeService: EmployeeService){}
 
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit {
         this.getEmployees();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }
@@ -67,7 +68,7 @@ export class AppComponent implements OnInit {
         this.getEmployees();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }

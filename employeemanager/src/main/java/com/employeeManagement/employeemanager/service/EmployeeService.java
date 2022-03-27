@@ -6,11 +6,12 @@ import com.employeeManagement.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class EmployeeService {
     private  final EmployeeRepo employeeRepo;
 
@@ -36,7 +37,7 @@ public class EmployeeService {
         return employeeRepo.findEmployeeById(id)
                 .orElseThrow(()->new UserNotFoundException("User By id "+id+"was not found"));
     }
-
+  @Transactional
     public void deleteEmployee(Long id){
         employeeRepo.deleteEmployeeById(id);
     }
